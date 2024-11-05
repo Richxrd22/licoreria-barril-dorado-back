@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.barrildorado.lbd.dto.producto.DatosActualizarProducto;
+import com.barrildorado.lbd.dto.producto.DatosRegistroProducto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -60,4 +64,31 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "id_proveedor", nullable = false)
     private Proveedor id_proveedor;
+
+    public Producto(@Valid DatosRegistroProducto datosRegistroProducto,Categoria categoria,Proveedor proveedor) {
+        this.nombre=datosRegistroProducto.nombre();
+        this.descripcion=datosRegistroProducto.descripcion();
+        this.cantidad=datosRegistroProducto.cantidad();
+        this.estado_cantidad=datosRegistroProducto.estado_cantidad();
+        this.fecha_produccion=datosRegistroProducto.fecha_produccion();
+        this.fecha_vencimiento=datosRegistroProducto.fecha_vencimiento();
+        this.precio=datosRegistroProducto.precio();
+        this.id_categoria=categoria;
+        this.id_proveedor=proveedor;
+    }
+
+    public void actualizar(@Valid DatosActualizarProducto datosActualizarProducto,Categoria categoria, Proveedor proveedor){
+        
+        this.nombre=datosActualizarProducto.nombre();
+        this.descripcion=datosActualizarProducto.descripcion();
+        this.cantidad=datosActualizarProducto.cantidad();
+        this.estado_cantidad=datosActualizarProducto.estado_cantidad();
+        this.fecha_produccion=datosActualizarProducto.fecha_produccion();
+        this.fecha_vencimiento=datosActualizarProducto.fecha_vencimiento();
+        this.precio=datosActualizarProducto.precio();
+        this.id_categoria=categoria;
+        this.id_proveedor=proveedor;
+    }
+
+    
 }
