@@ -31,9 +31,11 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id_producto")
 @Table(name = "producto")
 public class Producto {
+
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto")
     private Long id_producto;
     
     @Column(unique = true, nullable = false)

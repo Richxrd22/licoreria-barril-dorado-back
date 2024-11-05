@@ -11,8 +11,8 @@ public record DatosRegistroProducto(
         @NotNull int cantidad,
         @NotNull double precio,
         @NotNull Boolean estado_cantidad,
-        @NotBlank LocalDate fecha_produccion,
-        @NotBlank LocalDate fecha_vencimiento,
+        @NotNull LocalDate fecha_produccion,
+        @NotNull LocalDate fecha_vencimiento,
         @NotNull Long id_categoria,
         @NotNull Long id_proveedor) {
 

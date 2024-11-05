@@ -67,8 +67,8 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public void deleteProducto(Long id) {
-        Producto producto = productoRepository.findById(id).orElse(null);
+    public void deleteProducto(Long id_producto) {
+        Producto producto = productoRepository.findById(id_producto).orElse(null);
         if(producto != null){
             productoRepository.delete(producto);
         }else{
