@@ -1,8 +1,8 @@
 CREATE TABLE empresa (
     id_empresa BIGINT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
     ruc VARCHAR(11) NOT NULL UNIQUE,
-    website VARCHAR(100) NOT NULL,
+    website VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_empresa)
 );
 
@@ -16,7 +16,7 @@ CREATE TABLE proveedor (
     id_proveedor BIGINT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
-    correo VARCHAR(100) NOT NULL UNIQUE,
+    correo VARCHAR(50) NOT NULL UNIQUE,
     dni VARCHAR(8) NOT NULL UNIQUE,
     telefono VARCHAR(9) NOT NULL,
     id_empresa BIGINT NOT NULL,
@@ -26,8 +26,8 @@ CREATE TABLE proveedor (
 
 CREATE TABLE producto (
     id_producto BIGINT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
-    descripcion VARCHAR(255) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(50) NOT NULL,
     cantidad INT NOT NULL CHECK (cantidad >= 0),
     precio DOUBLE NOT NULL CHECK (precio >= 0),
     estado_cantidad BIT(1) NOT NULL,

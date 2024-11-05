@@ -3,11 +3,11 @@ CREATE TABLE empleado (
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     dni VARCHAR(8) NOT NULL UNIQUE,
-    correo VARCHAR(100) NOT NULL UNIQUE,
+    correo VARCHAR(50) NOT NULL UNIQUE,
     telefono VARCHAR(9) NOT NULL,
-    direccion VARCHAR(255) NOT NULL,
+    direccion VARCHAR(50) NOT NULL,
     activo BIT(1) NOT NULL,
-    PRIMARY KEY (id_empleado),
+    PRIMARY KEY (id_empleado)
 );
 
 CREATE TABLE rol (
@@ -18,8 +18,8 @@ CREATE TABLE rol (
 
 CREATE TABLE usuario (
     id_usuario BIGINT NOT NULL AUTO_INCREMENT,
-    clave VARCHAR(255) NOT NULL,
-    correo VARCHAR(100) NOT NULL UNIQUE,
+    clave VARCHAR(50) NOT NULL,
+    correo VARCHAR(50) NOT NULL UNIQUE,
     id_empleado BIGINT NOT NULL UNIQUE,
     id_rol BIGINT NOT NULL,
     PRIMARY KEY (id_usuario),
