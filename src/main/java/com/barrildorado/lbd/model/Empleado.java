@@ -2,8 +2,6 @@ package com.barrildorado.lbd.model;
 
 import com.barrildorado.lbd.dto.empleado.DatosActualizarEmpleado;
 import com.barrildorado.lbd.dto.empleado.DatosRegistroEmpleado;
-import com.barrildorado.lbd.dto.producto.DatosActualizarProducto;
-import com.barrildorado.lbd.dto.producto.DatosRegistroProducto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
