@@ -2,6 +2,8 @@ package com.barrildorado.lbd.model;
 
 import java.util.List;
 
+import com.barrildorado.lbd.dto.proveedor.DatosActualizarProveedor;
+import com.barrildorado.lbd.dto.proveedor.DatosRegistroProveedor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -13,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -48,4 +51,25 @@ public class Proveedor {
     @JsonIgnore
     @OneToMany(mappedBy = "id_proveedor")
     private List<Producto> productos;
+
+    public Proveedor(@Valid DatosRegistroProveedor datosRegistroProveedor, Empresa empresa) {
+        this.nombre = datosRegistroProveedor.nombre();
+        this.apellido = datosRegistroProveedor.apellido();
+        this.correo = datosRegistroProveedor.correo();
+        this.dni = datosRegistroProveedor.dni();
+        this.telefono = datosRegistroProveedor.telefono();
+        this.id_empresa = empresa;
+    }
+
+    public void actualizar(@Valid DatosActualizarProveedor datosActualizarProveedor, Empresa empresa) {
+
+        this.nombre = datosActualizarProveedor.nombre();
+        this.apellido = datosActualizarProveedor.apellido();
+        this.correo = datosActualizarProveedor.correo();
+        this.dni = datosActualizarProveedor.dni();
+        this.telefono = datosActualizarProveedor.telefono();
+
+        this.id_empresa = empresa;
+    }
+
 }
