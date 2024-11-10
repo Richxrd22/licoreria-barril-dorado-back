@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.barrildorado.lbd.dto.categoria.DatosActualizarCategoria;
 import com.barrildorado.lbd.dto.categoria.DatosRegistroCategoria;
-import com.barrildorado.lbd.dto.rol.DatosActualizarRol;
-import com.barrildorado.lbd.dto.rol.DatosRegistroRol;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
