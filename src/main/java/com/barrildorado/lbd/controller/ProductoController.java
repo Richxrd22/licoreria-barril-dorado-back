@@ -1,4 +1,4 @@
-package com.barrildorado.lbd.controller.producto;
+package com.barrildorado.lbd.controller;
 
 import java.net.URI;
 

@@ -1,4 +1,4 @@
-package com.barrildorado.lbd.controller.producto;
+package com.barrildorado.lbd.controller;
 
 import com.barrildorado.lbd.dto.empresa.*;
 import com.barrildorado.lbd.service.empresa.EmpresaService;
