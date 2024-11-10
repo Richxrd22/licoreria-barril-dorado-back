@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.barrildorado.lbd.dto.empleado.DatosActualizarEmpleado;
 import com.barrildorado.lbd.dto.empleado.DatosListadoEmpleado;
@@ -12,7 +13,7 @@ import com.barrildorado.lbd.dto.empleado.DatosRegistroEmpleado;
 import com.barrildorado.lbd.dto.empleado.DatosRespuestaEmpleado;
 import com.barrildorado.lbd.model.Empleado;
 import com.barrildorado.lbd.repository.EmpleadoRepository;
-
+@Service
 public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Autowired

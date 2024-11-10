@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.barrildorado.lbd.dto.rol.DatosActualizarRol;
 import com.barrildorado.lbd.dto.rol.DatosListadoRol;
@@ -12,7 +13,7 @@ import com.barrildorado.lbd.dto.rol.DatosRegistroRol;
 import com.barrildorado.lbd.dto.rol.DatosRespuestaRol;
 import com.barrildorado.lbd.model.Rol;
 import com.barrildorado.lbd.repository.RolRepository;
-
+@Service
 public class RolServiceImpl implements RolService {
 
     @Autowired

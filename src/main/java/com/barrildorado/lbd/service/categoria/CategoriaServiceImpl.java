@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.barrildorado.lbd.dto.categoria.DatosActualizarCategoria;
 import com.barrildorado.lbd.dto.categoria.DatosListadoCategoria;
@@ -12,7 +13,7 @@ import com.barrildorado.lbd.dto.categoria.DatosRegistroCategoria;
 import com.barrildorado.lbd.dto.categoria.DatosRespuestaCategoria;
 import com.barrildorado.lbd.model.Categoria;
 import com.barrildorado.lbd.repository.CategoriaRepository;
-
+@Service
 public class CategoriaServiceImpl implements CategoriaService{
     @Autowired
     private CategoriaRepository categoriaRepository;

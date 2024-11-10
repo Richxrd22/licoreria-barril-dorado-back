@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.barrildorado.lbd.dto.usuario.DatosActualizarUsuario;
 import com.barrildorado.lbd.dto.usuario.DatosListadoUsuario;
@@ -16,7 +17,7 @@ import com.barrildorado.lbd.model.Usuario;
 import com.barrildorado.lbd.repository.EmpleadoRepository;
 import com.barrildorado.lbd.repository.RolRepository;
 import com.barrildorado.lbd.repository.UsuarioRepository;
-
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired

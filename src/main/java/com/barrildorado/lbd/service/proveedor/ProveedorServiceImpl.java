@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.barrildorado.lbd.dto.proveedor.DatosActualizarProveedor;
 import com.barrildorado.lbd.dto.proveedor.DatosListadoProveedor;
@@ -14,7 +15,7 @@ import com.barrildorado.lbd.model.Empresa;
 import com.barrildorado.lbd.model.Proveedor;
 import com.barrildorado.lbd.repository.EmpresaRepository;
 import com.barrildorado.lbd.repository.ProveedorRepository;
-
+@Service
 public class ProveedorServiceImpl implements ProveedorService {
 
     @Autowired
