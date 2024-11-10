@@ -1,7 +1,5 @@
 package com.barrildorado.lbd.model;
 
-import com.barrildorado.lbd.dto.producto.DatosActualizarProducto;
-import com.barrildorado.lbd.dto.producto.DatosRegistroProducto;
 import com.barrildorado.lbd.dto.rol.DatosActualizarRol;
 import com.barrildorado.lbd.dto.rol.DatosRegistroRol;
 
