@@ -6,9 +6,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.barrildorado.lbd.dto.Login.DatosLoginUsuario;
-import com.barrildorado.lbd.dto.Login.DatosRespuestaLoginUsuario;
 import com.barrildorado.lbd.dto.empleadousuario.DatosRegistroUsuarioEmpleado;
+import com.barrildorado.lbd.dto.login.DatosLoginUsuario;
+import com.barrildorado.lbd.dto.login.DatosRespuestaLoginUsuario;
 import com.barrildorado.lbd.jwt.JwtService;
 import com.barrildorado.lbd.repository.UsuarioRepository;
 import com.barrildorado.lbd.service.usuario.UsuarioService;

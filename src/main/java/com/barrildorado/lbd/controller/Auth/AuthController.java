@@ -1,8 +1,8 @@
-package com.barrildorado.lbd.controller.Test;
+package com.barrildorado.lbd.controller.Auth;
 
-import com.barrildorado.lbd.dto.Login.DatosLoginUsuario;
-import com.barrildorado.lbd.dto.Login.DatosRespuestaLoginUsuario;
 import com.barrildorado.lbd.dto.empleadousuario.DatosRegistroUsuarioEmpleado;
+import com.barrildorado.lbd.dto.login.DatosLoginUsuario;
+import com.barrildorado.lbd.dto.login.DatosRespuestaLoginUsuario;
 import com.barrildorado.lbd.service.AuthService;
 
 import lombok.RequiredArgsConstructor;

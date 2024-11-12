@@ -1,4 +1,4 @@
-package com.barrildorado.lbd.dto.Login;
+package com.barrildorado.lbd.dto.login;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

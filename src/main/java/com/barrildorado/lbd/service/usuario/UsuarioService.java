@@ -3,8 +3,8 @@ package com.barrildorado.lbd.service.usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.barrildorado.lbd.dto.Login.DatosRespuestaLoginUsuario;
 import com.barrildorado.lbd.dto.empleadousuario.DatosRegistroUsuarioEmpleado;
+import com.barrildorado.lbd.dto.login.DatosRespuestaLoginUsuario;
 import com.barrildorado.lbd.dto.usuario.DatosActualizarUsuario;
 import com.barrildorado.lbd.dto.usuario.DatosListadoUsuario;
 import com.barrildorado.lbd.dto.usuario.DatosRegistroUsuario;

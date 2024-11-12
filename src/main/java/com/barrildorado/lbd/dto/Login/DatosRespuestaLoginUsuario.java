@@ -1,4 +1,4 @@
-package com.barrildorado.lbd.dto.Login;
+package com.barrildorado.lbd.dto.login;
 
 
 public record DatosRespuestaLoginUsuario(

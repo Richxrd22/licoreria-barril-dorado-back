@@ -1,8 +1,6 @@
 package com.barrildorado.lbd.jwt;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,15 +44,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             UserDetails userDetails = userDetailsService.loadUserByUsername(correo);
             if (jwtService.isTokenValid(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities()
-                                .stream()
-                                .map(grantedAuthority -> new SimpleGrantedAuthority(
-                                        "ROLE_" + grantedAuthority.getAuthority())) // Agregar el prefijo "ROLE_"
-                                .collect(Collectors.toList())); // Asegúrate de que todos los roles tengan el prefijo
-                                                                // "ROLE_"
+                    userDetails, null, userDetails.getAuthorities()
+                        .stream()
+                        .map(grantedAuthority -> new SimpleGrantedAuthority("ROLE_" + grantedAuthority.getAuthority())) // Añadir prefijo "ROLE_"
+                        .collect(Collectors.toList())
+                );
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            } else {
+                // Log para ver si el token es inválido
+                System.out.println("Token inválido o expirado");
             }
+        } else {
+            // Log si el correo no está en el token
+            System.out.println("Correo no encontrado en el token");
         }
         filterChain.doFilter(request, response);
     }
