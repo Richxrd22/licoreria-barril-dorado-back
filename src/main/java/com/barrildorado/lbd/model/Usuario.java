@@ -1,5 +1,12 @@
 package com.barrildorado.lbd.model;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.barrildorado.lbd.dto.usuario.DatosActualizarUsuario;
 import com.barrildorado.lbd.dto.usuario.DatosRegistroUsuario;
 
@@ -14,19 +21,19 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@Builder
+@Data
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id_usuario")
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,6 +66,44 @@ public class Usuario {
         this.correo = datosActualizarUsuario.correo();
         this.id_empleado = empleado;
         this.id_rol = rol;
-
     }
+
+   
+    @Override
+    public String getPassword() {
+        return clave;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Asigna los roles de la entidad Usuario
+        return List.of(new SimpleGrantedAuthority(id_rol.getNombre_rol()));
+    }
+    
+    @Override
+    public String getUsername() {
+        // En este caso, se utilizaría el correo como el nombre de usuario
+        return correo;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true; // Puedes ajustar la lógica según las necesidades de tu aplicación
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true; // Ajustar según las necesidades
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true; // Ajustar según las necesidades
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true; // Ajustar según las necesidades, por ejemplo, si el usuario está activo o no
+    }
+
 }

@@ -8,6 +8,7 @@ public class LbdApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LbdApplication.class, args);
+
 	}
 
 }

@@ -13,16 +13,15 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+@Data // Genera getters, setters, equals, hashCode y toString
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor // Constructor sin parámetros para JPA
+@AllArgsConstructor // Constructor con todos los parámetros
+@Builder // Permite usar el patrón de construcción
 @EqualsAndHashCode(of = "id_empleado")
 @Table(name = "empleado")
 public class Empleado {
@@ -67,7 +66,6 @@ public class Empleado {
     }
 
     public void actualizar(@Valid DatosActualizarEmpleado datosActualizarEmpleado) {
-
         this.nombre = datosActualizarEmpleado.nombre();
         this.apellido = datosActualizarEmpleado.apellido();
         this.dni = datosActualizarEmpleado.dni();
