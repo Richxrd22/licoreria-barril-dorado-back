@@ -1,12 +1,10 @@
 package com.barrildorado.lbd.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -41,10 +39,10 @@ public class EmpleadoController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<Page<DatosListadoEmpleado>> listarEmpleados(
-            @PageableDefault(direction = Sort.Direction.ASC) Pageable paginacion) {
-        Page<DatosListadoEmpleado> empleadoPage = empleadoService.getAllEmpleados(paginacion);
-        return ResponseEntity.ok(empleadoPage);
+    public ResponseEntity<List<DatosListadoEmpleado>> listarEmpleados() {
+        Pageable paginacion = Pageable.unpaged(); // Para traer todos los productos sin paginación
+        List<DatosListadoEmpleado> empleados = empleadoService.getAllEmpleados(paginacion).getContent();
+        return ResponseEntity.ok(empleados);
     }
 
     @PutMapping("/actualizar")

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/categoria")
@@ -34,10 +35,11 @@ public class CategoriaController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<Page<DatosListadoCategoria>> listarCategorias(
+    public ResponseEntity<List<DatosListadoCategoria>> listarCategorias(
             @PageableDefault(direction = Sort.Direction.ASC) Pageable paginacion) {
         Page<DatosListadoCategoria> categoriaPage = categoriaService.getAllCategorias(paginacion);
-        return ResponseEntity.ok(categoriaPage);
+        List<DatosListadoCategoria> categorias = categoriaPage.getContent();
+        return ResponseEntity.ok(categorias);
     }
 
     @PutMapping("/actualizar")

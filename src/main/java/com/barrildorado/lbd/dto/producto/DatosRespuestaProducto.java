@@ -13,8 +13,11 @@ public record DatosRespuestaProducto(
         Boolean estado_cantidad,
         LocalDate fecha_produccion,
         LocalDate fecha_vencimiento,
+        String id_categoria,
         String categoria,
-        String proveedor) {
+        String id_proveedor,
+        String proveedor,
+        String telefono_proveedor) {
 
     public DatosRespuestaProducto(Producto producto) {
         this(
@@ -26,7 +29,11 @@ public record DatosRespuestaProducto(
                 producto.getEstado_cantidad(),
                 producto.getFecha_produccion(),
                 producto.getFecha_vencimiento(),
+                producto.getId_categoria().getId_categoria().toString(),
                 producto.getId_categoria().getNombre_categoria(),
-                producto.getId_proveedor().getNombre());
+                producto.getId_proveedor().getId_proveedor().toString(),
+                producto.getId_proveedor().getNombre() +" "+ producto.getId_proveedor().getApellido(),
+                producto.getId_proveedor().getTelefono()
+                );
     }
 }

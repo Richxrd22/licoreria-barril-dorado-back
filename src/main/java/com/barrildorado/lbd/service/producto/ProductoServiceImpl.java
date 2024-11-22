@@ -47,6 +47,7 @@ public class ProductoServiceImpl implements ProductoService {
         Page<Producto> productoPage= productoRepository.findAll(pageable);
         return productoPage.map(DatosListadoProducto::new);
     }
+    
 
     @Override
     public DatosRespuestaProducto createProducto(DatosRegistroProducto datosRegistroProducto) {

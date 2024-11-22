@@ -17,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/proveedor")
@@ -37,12 +38,13 @@ public class ProveedorController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<Page<DatosListadoProveedor>> listarProveedores(
+    public ResponseEntity<List<DatosListadoProveedor>> listarProveedores(
             @PageableDefault(direction = Sort.Direction.ASC) Pageable paginacion) {
         Page<DatosListadoProveedor> proveedorPage = proveedorService.getAllProveedores(paginacion);
-        return ResponseEntity.ok(proveedorPage);
+        List<DatosListadoProveedor> proveedores = proveedorPage.getContent();
+        return ResponseEntity.ok(proveedores);
     }
-
+    
     @PutMapping("/actualizar")
     @Transactional
     public ResponseEntity<DatosRespuestaProveedor> actualizarProveedor(
