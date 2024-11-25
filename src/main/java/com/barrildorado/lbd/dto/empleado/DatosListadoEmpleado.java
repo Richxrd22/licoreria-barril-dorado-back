@@ -7,9 +7,11 @@ public record DatosListadoEmpleado(
         String nombre,
         String apellido,
         String dni,
-        String correo,
+        String correo_personal,
+        String correo_empresarial,
         String telefono,
-        Boolean activo) {
+        Boolean activo,
+        String nombre_rol) {
 
     public DatosListadoEmpleado(Empleado empleado) {
         this(
@@ -18,7 +20,10 @@ public record DatosListadoEmpleado(
                 empleado.getApellido(),
                 empleado.getDni(),
                 empleado.getCorreo(),
+                empleado.getUsuario().getCorreo(),
                 empleado.getTelefono(),
-                empleado.getActivo());
+                empleado.getActivo(),
+                empleado.getUsuario().getId_rol().getNombre_rol()
+                );
     }
 }

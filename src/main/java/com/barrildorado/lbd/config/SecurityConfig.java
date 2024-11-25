@@ -50,7 +50,7 @@ public class SecurityConfig {
                                 }))
                                 .csrf(csrf -> csrf.disable())
                                 .authorizeHttpRequests(authRequest -> authRequest
-                                                .requestMatchers("/auth/**").permitAll()
+                                                .requestMatchers("/auth/login").permitAll()
                                                 .requestMatchers("/producto/listar").hasAnyRole("ADMIN", "USER")
                                                 .requestMatchers("/producto/registrar").hasAnyRole("ADMIN")
                                                 .requestMatchers("/producto/actualizar").hasAnyRole("ADMIN")

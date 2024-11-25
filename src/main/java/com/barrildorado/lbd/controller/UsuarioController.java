@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.barrildorado.lbd.dto.usuario.DatosActualizarContraseñaUsuarioAdmin;
 import com.barrildorado.lbd.dto.usuario.DatosActualizarUsuario;
 import com.barrildorado.lbd.dto.usuario.DatosListadoUsuario;
 import com.barrildorado.lbd.dto.usuario.DatosRegistroUsuario;
@@ -74,4 +75,21 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    @PutMapping("/cambiar-contraseña-admin")
+    public ResponseEntity<String> cambiarContraseña(
+            @RequestBody DatosActualizarContraseñaUsuarioAdmin datosActualizarContraseñaUsuarioAdmin) {
+        try {
+            // Llamamos al servicio para cambiar la contraseña
+            usuarioService.cambiarContraseñaDirecta(datosActualizarContraseñaUsuarioAdmin);
+
+            // Respondemos con un mensaje de éxito
+            return ResponseEntity.ok("Contraseña actualizada con éxito.");
+        } catch (Exception e) {
+            // Si ocurre algún error, retornamos una respuesta de error
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Error al actualizar la contraseña: " + e.getMessage());
+        }
+    }
+
 }

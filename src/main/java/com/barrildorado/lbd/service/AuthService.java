@@ -11,7 +11,7 @@ import com.barrildorado.lbd.dto.login.DatosLoginUsuario;
 import com.barrildorado.lbd.dto.login.DatosRespuestaLoginUsuario;
 import com.barrildorado.lbd.jwt.JwtService;
 import com.barrildorado.lbd.repository.UsuarioRepository;
-import com.barrildorado.lbd.service.usuario.UsuarioService;
+import com.barrildorado.lbd.service.UsuarioEmpleado.UsuarioEmpleadoService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +23,7 @@ public class AuthService {
     private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private UsuarioService usuarioService;
+    private UsuarioEmpleadoService usuarioEmpleadoService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -39,7 +39,7 @@ public class AuthService {
     }
 
     public DatosRespuestaLoginUsuario register(DatosRegistroUsuarioEmpleado request) {
-        return usuarioService.createUsuarioEmpleado(request);
+        return usuarioEmpleadoService.createUsuarioEmpleado(request);
     }
 
 }

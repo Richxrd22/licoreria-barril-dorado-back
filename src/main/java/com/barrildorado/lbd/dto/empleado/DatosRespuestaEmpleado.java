@@ -7,9 +7,12 @@ public record DatosRespuestaEmpleado(
         String nombre,
         String apellido,
         String dni,
-        String correo,
+        String correo_personal,
         String telefono,
         String direccion,
+        Long id_usuario,
+        String correo_empresarial,
+        Long id_rol,
         Boolean activo) {
 
     public DatosRespuestaEmpleado(Empleado empleado) {
@@ -21,6 +24,9 @@ public record DatosRespuestaEmpleado(
                 empleado.getCorreo(),
                 empleado.getTelefono(),
                 empleado.getDireccion(),
+                empleado.getUsuario().getId_usuario(),
+                empleado.getUsuario().getCorreo(),
+                empleado.getUsuario().getId_rol().getId_rol(),
                 empleado.getActivo());
     }
 }
