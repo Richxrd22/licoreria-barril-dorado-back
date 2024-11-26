@@ -43,6 +43,8 @@ public class Proveedor {
     private String dni;
     @Column(unique = true, nullable = false, length = 9)
     private String telefono;
+    @Column
+    private Boolean activo;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", nullable = false)

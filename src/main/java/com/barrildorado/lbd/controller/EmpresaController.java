@@ -1,6 +1,7 @@
 package com.barrildorado.lbd.controller;
 
 import com.barrildorado.lbd.dto.empresa.*;
+import com.barrildorado.lbd.dto.producto.DatosListadoProducto;
 import com.barrildorado.lbd.service.empresa.EmpresaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/empresa")
@@ -36,10 +38,10 @@ public class EmpresaController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<Page<DatosListadoEmpresa>> listarEmpresas(
-            @PageableDefault(direction = Sort.Direction.ASC) Pageable paginacion) {
-        Page<DatosListadoEmpresa> empresaPage = empresaService.getAllEmpresas(paginacion);
-        return ResponseEntity.ok(empresaPage);
+    public ResponseEntity<List<DatosListadoEmpresa>> listarEmpresas() {
+        Pageable paginacion = Pageable.unpaged();
+        List<DatosListadoEmpresa> empresas = empresaService.getAllEmpresas(paginacion).getContent();
+        return ResponseEntity.ok(empresas);
     }
 
     @PutMapping("/actualizar")

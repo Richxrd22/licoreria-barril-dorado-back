@@ -60,4 +60,8 @@ public class RolServiceImpl implements RolService {
         }
     }
 
+    @Override
+    public Optional<Rol> findByNombreRol(String nombreRol) {
+        return rolRepository.findByNombre_rol(nombreRol);
+    }
 }

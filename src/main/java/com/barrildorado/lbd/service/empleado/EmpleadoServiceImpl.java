@@ -59,4 +59,5 @@ public class EmpleadoServiceImpl implements EmpleadoService {
             throw new IllegalArgumentException("No se encontro el Empleado con el ID proporcionado");
         }
     }
+
 }

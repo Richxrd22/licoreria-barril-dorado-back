@@ -17,6 +17,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
 @Data // Genera getters, setters, equals, hashCode y toString
 @Entity
 @NoArgsConstructor // Constructor sin parámetros para JPA
@@ -48,7 +49,7 @@ public class Empleado {
     @Column(unique = true, nullable = false, length = 8)
     private String dni;
 
-    @Column
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private Boolean activo;
 
     @JsonIgnore

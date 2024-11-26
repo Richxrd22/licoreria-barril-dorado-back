@@ -15,6 +15,7 @@ public record DatosActualizarProducto(
         @NotNull LocalDate fecha_produccion,
         @NotNull LocalDate fecha_vencimiento,
         @NotNull Long id_categoria,
-        @NotNull Long id_proveedor) {
+        @NotNull Long id_proveedor,
+        @NotNull Boolean activo) {
 
 }

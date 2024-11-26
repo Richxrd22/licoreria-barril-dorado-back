@@ -9,19 +9,22 @@ public record DatosListadoProducto(
         String nombre,
         String descripcion,
         int cantidad,
-        Boolean estado_cantidad,
+        int estado_cantidad,  // Cambiado a int para 0 y 1
         LocalDate fecha_produccion,
         LocalDate fecha_vencimiento,
-        String categoria) {
+        String categoria,
+        int activo) {  // Cambiado a int para 0 y 1
+
     public DatosListadoProducto(Producto producto) {
         this(
                 producto.getId_producto(),
                 producto.getNombre(),
                 producto.getDescripcion(),
                 producto.getCantidad(),
-                producto.getEstado_cantidad(),
+                producto.getEstado_cantidad() != null && producto.getEstado_cantidad() ? 1 : 0,  // Convertir a 0 o 1
                 producto.getFecha_produccion(),
                 producto.getFecha_vencimiento(),
-                producto.getId_categoria().getNombre_categoria());
+                producto.getId_categoria().getNombre_categoria(),
+                producto.getActivo() != null && producto.getActivo() ? 1 : 0);  // Convertir a 0 o 1
     }
 }

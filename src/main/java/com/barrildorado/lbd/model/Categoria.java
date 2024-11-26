@@ -36,6 +36,9 @@ public class Categoria {
     @Column(unique = true, nullable = false)
     private String nombre_categoria;
 
+    @Column
+    private Boolean activo;
+    
     @JsonIgnore
     @OneToMany(mappedBy = "id_categoria")
     private List<Producto> productos;

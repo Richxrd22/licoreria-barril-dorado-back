@@ -10,14 +10,16 @@ public record DatosRespuestaProducto(
         String descripcion,
         int cantidad,
         double precio,
-        Boolean estado_cantidad,
+        int estado_cantidad,  // Cambiado a int para 0 y 1
         LocalDate fecha_produccion,
         LocalDate fecha_vencimiento,
-        String id_categoria,
+        Long id_categoria,
         String categoria,
-        String id_proveedor,
+        Long id_proveedor,
         String proveedor,
-        String telefono_proveedor) {
+        String telefono_proveedor,
+        int activo  // Cambiado a int para 0 y 1
+        ) {
 
     public DatosRespuestaProducto(Producto producto) {
         this(
@@ -26,14 +28,15 @@ public record DatosRespuestaProducto(
                 producto.getDescripcion(),
                 producto.getCantidad(),
                 producto.getPrecio(),
-                producto.getEstado_cantidad(),
+                producto.getEstado_cantidad() != null && producto.getEstado_cantidad() ? 1 : 0,  // Convertir a 0 o 1
                 producto.getFecha_produccion(),
                 producto.getFecha_vencimiento(),
-                producto.getId_categoria().getId_categoria().toString(),
+                producto.getId_categoria().getId_categoria(),
                 producto.getId_categoria().getNombre_categoria(),
-                producto.getId_proveedor().getId_proveedor().toString(),
-                producto.getId_proveedor().getNombre() +" "+ producto.getId_proveedor().getApellido(),
-                producto.getId_proveedor().getTelefono()
-                );
+                producto.getId_proveedor().getId_proveedor(),
+                producto.getId_proveedor().getNombre() + " " + producto.getId_proveedor().getApellido(),
+                producto.getId_proveedor().getTelefono(),
+                producto.getActivo() != null && producto.getActivo() ? 1 : 0  // Convertir a 0 o 1
+        );
     }
 }

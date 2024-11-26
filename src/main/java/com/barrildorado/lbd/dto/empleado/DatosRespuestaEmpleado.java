@@ -13,7 +13,8 @@ public record DatosRespuestaEmpleado(
         Long id_usuario,
         String correo_empresarial,
         Long id_rol,
-        Boolean activo) {
+        String nombre_rol,
+        int activo) {
 
     public DatosRespuestaEmpleado(Empleado empleado) {
         this(
@@ -27,6 +28,8 @@ public record DatosRespuestaEmpleado(
                 empleado.getUsuario().getId_usuario(),
                 empleado.getUsuario().getCorreo(),
                 empleado.getUsuario().getId_rol().getId_rol(),
-                empleado.getActivo());
+                empleado.getUsuario().getId_rol().getNombre_rol(),
+                empleado.getActivo() != null && empleado.getActivo() ? 1 : 0  // Convertir a 0 o 1
+                );
     }
 }

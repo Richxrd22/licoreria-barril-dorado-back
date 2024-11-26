@@ -31,7 +31,7 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_rol;
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false , name = "nombre_rol")
     private String nombre_rol;
 
     @JsonIgnore
