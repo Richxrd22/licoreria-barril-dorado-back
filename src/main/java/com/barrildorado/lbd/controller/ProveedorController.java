@@ -38,10 +38,9 @@ public class ProveedorController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<DatosListadoProveedor>> listarProveedores(
-            @PageableDefault(direction = Sort.Direction.ASC) Pageable paginacion) {
-        Page<DatosListadoProveedor> proveedorPage = proveedorService.getAllProveedores(paginacion);
-        List<DatosListadoProveedor> proveedores = proveedorPage.getContent();
+    public ResponseEntity<List<DatosListadoProveedor>> listarProveedores() {
+        Pageable paginacion = Pageable.unpaged();
+        List<DatosListadoProveedor> proveedores = proveedorService.getAllProveedores(paginacion).getContent();
         return ResponseEntity.ok(proveedores);
     }
     

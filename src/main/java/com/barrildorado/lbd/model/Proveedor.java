@@ -61,6 +61,7 @@ public class Proveedor {
         this.dni = datosRegistroProveedor.dni();
         this.telefono = datosRegistroProveedor.telefono();
         this.id_empresa = empresa;
+        this.activo=datosRegistroProveedor.activo();
     }
 
     public void actualizar(@Valid DatosActualizarProveedor datosActualizarProveedor, Empresa empresa) {
@@ -70,8 +71,8 @@ public class Proveedor {
         this.correo = datosActualizarProveedor.correo();
         this.dni = datosActualizarProveedor.dni();
         this.telefono = datosActualizarProveedor.telefono();
-
         this.id_empresa = empresa;
+        this.activo=datosActualizarProveedor.activo();
     }
 
 }

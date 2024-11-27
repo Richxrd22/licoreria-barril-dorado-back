@@ -10,5 +10,7 @@ public record DatosRegistroProveedor(
         @Email String correo,
         @NotBlank String dni,
         @NotBlank String telefono,
-        @NotNull Long id_empresa) {
+        @NotNull Long id_empresa,
+        @NotNull Boolean activo
+        ) {
 }
