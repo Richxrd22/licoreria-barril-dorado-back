@@ -8,6 +8,7 @@ public record DatosListadoProveedor(
         String correo,
         String dni,
         String telefono,
+        Long id_empresa,
         String empresa,
         int activo) {
 
@@ -19,6 +20,7 @@ public record DatosListadoProveedor(
                 proveedor.getCorreo(),
                 proveedor.getDni(),
                 proveedor.getTelefono(),
+                proveedor.getId_empresa().getId_empresa(),
                 proveedor.getId_empresa().getNombre(),
                 proveedor.getActivo() != null && proveedor.getActivo() ? 1 : 0  // Convertir a 0 o 1
                 );

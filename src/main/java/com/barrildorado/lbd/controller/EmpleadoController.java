@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class EmpleadoController {
 
     @GetMapping("/listar")
     public ResponseEntity<List<DatosListadoEmpleado>> listarEmpleados() {
-        Pageable paginacion = Pageable.unpaged(); // Para traer todos los productos sin paginación
+        Pageable paginacion = Pageable.unpaged();
         List<DatosListadoEmpleado> empleados = empleadoService.getAllEmpleados(paginacion).getContent();
         return ResponseEntity.ok(empleados);
     }
@@ -71,6 +72,16 @@ public class EmpleadoController {
             return ResponseEntity.ok("Eliminación Exitosa");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/buscarPorCorreo/{correo}")
+    public ResponseEntity<DatosRespuestaEmpleado> getEmpleadoByCorreo(@PathVariable String correo) {
+        try {
+            DatosRespuestaEmpleado empleado = empleadoService.getEmpleadoByCorreo(correo);
+            return ResponseEntity.ok(empleado); 
+        } catch (UsernameNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 }

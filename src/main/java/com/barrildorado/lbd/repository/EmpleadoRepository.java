@@ -10,4 +10,5 @@ import com.barrildorado.lbd.model.Empleado;
 public interface EmpleadoRepository extends JpaRepository<Empleado,Long>{
      // Método para buscar un empleado por correo
      Optional<Empleado> findByCorreo(String correo);
+     Optional<Empleado> findByUsuarioCorreo(String correo);
 }

@@ -8,11 +8,12 @@ public record DatosListadoEmpresa(
     String ruc,
     String website) {
 
-public DatosListadoEmpresa(Empresa empresa) {
-    this(
+    public DatosListadoEmpresa(Empresa empresa) {
+        this(
             empresa.getId_empresa(),
             empresa.getNombre(),
             empresa.getRuc(),
-            empresa.getWebsite());
-}
+            empresa.getWebsite()
+        );
+    }
 }

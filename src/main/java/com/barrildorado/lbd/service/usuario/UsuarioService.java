@@ -23,6 +23,7 @@ public interface UsuarioService {
     
     void cambiarContraseñaDirecta( DatosActualizarContraseñaUsuarioAdmin datosActualizarContraseñaUsuarioAdmin);
 
+
     void deleteUsuario(Long id_usuario);
 
 }

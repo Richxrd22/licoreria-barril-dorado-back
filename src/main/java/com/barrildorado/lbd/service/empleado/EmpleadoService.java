@@ -20,6 +20,8 @@ public interface EmpleadoService {
 
   DatosRespuestaEmpleado updateEmpleado(DatosActualizarEmpleado datosActualizarEmpleado);
 
+  DatosRespuestaEmpleado getEmpleadoByCorreo(String correo); // Método nuevo
+  
   void deleteEmpleado(Long id_empleado);
 
 }

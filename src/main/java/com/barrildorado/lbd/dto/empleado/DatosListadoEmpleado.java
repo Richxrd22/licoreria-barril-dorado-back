@@ -10,7 +10,9 @@ public record DatosListadoEmpleado(
         String correo_personal,
         String correo_empresarial,
         String telefono,
+        String direccion,
         int activo,
+        Long id_usuario,
         String nombre_rol) {
 
     public DatosListadoEmpleado(Empleado empleado) {
@@ -22,7 +24,9 @@ public record DatosListadoEmpleado(
                 empleado.getCorreo(),
                 empleado.getUsuario().getCorreo(),
                 empleado.getTelefono(),
+                empleado.getDireccion(),
                 empleado.getActivo() != null && empleado.getActivo() ? 1 : 0, // Convertir a 0 o 1,
+                empleado.getUsuario().getId_usuario(),
                 empleado.getUsuario().getId_rol().getNombre_rol());
     }
 }

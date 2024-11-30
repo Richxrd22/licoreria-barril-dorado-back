@@ -52,20 +52,15 @@ public class AuthController {
     public ResponseEntity<DatosRespuestaLoginUsuario> update(
             @RequestBody DatosActualizarUsuarioEmpleado datosActualizarUsuarioEmpleado) {
         try {
-            // Llamar al servicio para actualizar el usuario y el empleado
             DatosRespuestaLoginUsuario respuesta = usuarioEmpleadoService
                     .updateUsuarioEmpleado(datosActualizarUsuarioEmpleado);
 
-            // Retornar una respuesta exitosa con el token generado
             return ResponseEntity.ok(respuesta);
         } catch (DuplicateEntityException e) {
-            // Manejar excepciones personalizadas, como duplicados
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(null); // O incluir un mensaje de error
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         } catch (RuntimeException e) {
-            // Manejar otras excepciones (por ejemplo, empleado o usuario no encontrado)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // O incluir un mensaje de error
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); 
         } catch (Exception e) {
-            // Manejar errores genéricos
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

@@ -76,20 +76,18 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/cambiar-contraseña-admin")
+    @PutMapping("/cambiar-contraseña")
     public ResponseEntity<String> cambiarContraseña(
             @RequestBody DatosActualizarContraseñaUsuarioAdmin datosActualizarContraseñaUsuarioAdmin) {
         try {
-            // Llamamos al servicio para cambiar la contraseña
             usuarioService.cambiarContraseñaDirecta(datosActualizarContraseñaUsuarioAdmin);
 
-            // Respondemos con un mensaje de éxito
             return ResponseEntity.ok("Contraseña actualizada con éxito.");
         } catch (Exception e) {
-            // Si ocurre algún error, retornamos una respuesta de error
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Error al actualizar la contraseña: " + e.getMessage());
         }
     }
 
+  
 }

@@ -1,14 +1,10 @@
 package com.barrildorado.lbd.controller;
 
 import com.barrildorado.lbd.dto.empresa.*;
-import com.barrildorado.lbd.dto.producto.DatosListadoProducto;
 import com.barrildorado.lbd.service.empresa.EmpresaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +40,14 @@ public class EmpresaController {
         return ResponseEntity.ok(empresas);
     }
 
+    @GetMapping("/listar/no-ocupados")
+    public ResponseEntity<List<DatosListadoEmpresa>> listarEmpresasNoUsadas(@RequestParam(required = false) Long idProveedorActual) {
+        Pageable paginacion = Pageable.unpaged();  
+    
+        List<DatosListadoEmpresa> empresas = empresaService.getAllEmpresasSinProveedorActivo(paginacion, idProveedorActual).getContent();
+        
+        return ResponseEntity.ok(empresas);
+    }
     @PutMapping("/actualizar")
     @Transactional
     public ResponseEntity<DatosRespuestaEmpresa> actualizarEmpresa(

@@ -13,6 +13,7 @@ import com.barrildorado.lbd.dto.empresa.DatosRespuestaEmpresa;
 public interface EmpresaService {
     DatosRespuestaEmpresa getEmpresaById(Long id_empresa);
     Page<DatosListadoEmpresa> getAllEmpresas(Pageable pageable);
+    Page<DatosListadoEmpresa> getAllEmpresasSinProveedorActivo(Pageable pageable, Long idProveedorActual);
     DatosRespuestaEmpresa createEmpresa(DatosRegistroEmpresa datosRegistroEmpresa);
     DatosRespuestaEmpresa updateEmpresa(DatosActualizarEmpresa datosActualizarEmpresa);
     void deleteEmpresa(Long id_empresa);

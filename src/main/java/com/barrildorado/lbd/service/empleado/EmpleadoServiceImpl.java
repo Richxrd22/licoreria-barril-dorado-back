@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.barrildorado.lbd.dto.empleado.DatosActualizarEmpleado;
@@ -13,6 +14,7 @@ import com.barrildorado.lbd.dto.empleado.DatosRegistroEmpleado;
 import com.barrildorado.lbd.dto.empleado.DatosRespuestaEmpleado;
 import com.barrildorado.lbd.model.Empleado;
 import com.barrildorado.lbd.repository.EmpleadoRepository;
+
 @Service
 public class EmpleadoServiceImpl implements EmpleadoService {
 
@@ -53,11 +55,21 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public void deleteEmpleado(Long id_empleado) {
         Empleado empleado = empleadoRepository.findById(id_empleado).orElse(null);
-        if(empleado != null){
+        if (empleado != null) {
             empleadoRepository.delete(empleado);
-        }else{
+        } else {
             throw new IllegalArgumentException("No se encontro el Empleado con el ID proporcionado");
         }
+    }
+
+    @Override
+    public DatosRespuestaEmpleado getEmpleadoByCorreo(String correo) {
+        // Busca al empleado usando el repositorio
+        Empleado empleado = empleadoRepository.findByUsuarioCorreo(correo)
+                .orElseThrow(() -> new UsernameNotFoundException("Empleado no encontrado con el correo: " + correo));
+
+        // Convierte el Empleado a DTO
+        return new DatosRespuestaEmpleado(empleado);
     }
 
 }
