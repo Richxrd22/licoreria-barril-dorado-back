@@ -63,7 +63,7 @@ public class RolController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensajeError);
         }
     }
-
+            
     @DeleteMapping("/eliminar/{id_rol}")
     public ResponseEntity<?> eliminarRol(@PathVariable Long id_rol) {
         try {

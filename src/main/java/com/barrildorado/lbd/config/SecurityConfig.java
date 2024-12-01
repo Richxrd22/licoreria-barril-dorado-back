@@ -52,8 +52,6 @@ public class SecurityConfig {
                                 .authorizeHttpRequests(authRequest -> authRequest
                                                 .requestMatchers("/auth/login").permitAll()
                                                 .requestMatchers("/producto/listar").hasAnyRole("ADMIN", "USER")
-                                                .requestMatchers("/producto/registrar").hasAnyRole("ADMIN")
-                                                .requestMatchers("/producto/actualizar").hasAnyRole("ADMIN")
                                                 // otros endpoints...     
                                                 .anyRequest().authenticated())
                                 .exceptionHandling(exceptionHandling -> exceptionHandling

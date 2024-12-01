@@ -34,6 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         final String token = getTokenFromRequest(request);
         final String correo;
+
         if (token == null) {
             filterChain.doFilter(request, response);
             return;
@@ -52,13 +53,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             } else {
-                // Log para ver si el token es inválido
+                // Token inválido o expirado: envía un 401 y detiene la cadena de filtros
                 System.out.println("Token inválido o expirado");
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("Token inválido o expirado");
+                return;
             }
-        } else {
+        } else if (correo == null) {
             // Log si el correo no está en el token
             System.out.println("Correo no encontrado en el token");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().write("Correo no encontrado en el token");
+            return;
         }
+
         filterChain.doFilter(request, response);
     }
 
