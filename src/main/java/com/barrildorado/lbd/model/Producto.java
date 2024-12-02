@@ -1,12 +1,14 @@
 package com.barrildorado.lbd.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.barrildorado.lbd.dto.producto.DatosActualizarProducto;
 import com.barrildorado.lbd.dto.producto.DatosRegistroProducto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,6 +17,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -68,6 +71,10 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "id_proveedor", nullable = false)
     private Proveedor id_proveedor;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "id_producto")
+    private List<MovimientoStock> movimiento_stock;
 
     public Producto(@Valid DatosRegistroProducto datosRegistroProducto, Categoria categoria, Proveedor proveedor) {
         this.nombre = datosRegistroProducto.nombre();

@@ -44,6 +44,15 @@ CREATE TABLE producto (
     FOREIGN KEY (id_proveedor) REFERENCES proveedor(id_proveedor)
 );
 
+CREATE TABLE movimiento_stock (
+    id_movimiento BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id_producto BIGINT NOT NULL,
+    fecha_movimiento DATE NOT NULL,
+    cantidad INT NOT NULL,
+    tipo_movimiento ENUM('ENTRADA', 'SALIDA') NOT NULL,
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
+
 INSERT INTO empresa (nombre, ruc, website) VALUES
 ('Johnnie Walker', '10123456789', 'www.johnniewalker.com'),
 ('Bacardi', '20123456789', 'www.bacardi.com'),
@@ -115,3 +124,56 @@ INSERT INTO producto (nombre, descripcion, cantidad, precio, estado_cantidad, fe
 ('Malibu Coconut', 'Licor de ron con coco', 120, 18.00, 1, '2023-04-20', '2025-04-20', 8, 2, 1),
 ('Belvedere Vodka', 'Vodka polaco premium', 110, 50.00, 1, '2023-05-30', '2027-05-30', 9, 7, 1),
 ('Bombay Sapphire', 'Gin inglés premium', 140, 30.00, 1, '2023-09-05', '2026-09-05', 10, 6, 1);
+
+INSERT INTO movimiento_stock (id_movimiento, id_producto, fecha_movimiento, cantidad, tipo_movimiento)
+VALUES
+    (1, 1, '2024-01-15', 20, 'ENTRADA'),
+    (2, 1, '2024-02-10', 30, 'SALIDA'),
+    (3, 1, '2024-03-05', 25, 'ENTRADA'),
+    (4, 1, '2024-04-12', 15, 'SALIDA'),
+    (5, 1, '2024-05-20', 40, 'ENTRADA'),
+    (6, 1, '2024-06-25', 10, 'SALIDA'),
+    (7, 1, '2024-07-10', 50, 'ENTRADA'),
+    (8, 1, '2024-08-15', 20, 'SALIDA'),
+    (9, 1, '2024-09-01', 30, 'ENTRADA'),
+    (10, 1, '2024-10-18', 40, 'SALIDA'),
+    (11, 1, '2024-11-02', 60, 'ENTRADA'),
+    (12, 1, '2024-12-05', 20, 'SALIDA'),
+    (13, 1, '2024-01-25', 35, 'ENTRADA'),
+    (14, 1, '2024-02-18', 45, 'SALIDA'),
+    (15, 1, '2024-03-12', 50, 'ENTRADA'),
+    (16, 1, '2024-04-20', 30, 'SALIDA'),
+    (17, 1, '2024-05-03', 40, 'ENTRADA'),
+    (18, 1, '2024-06-12', 20, 'SALIDA'),
+    (19, 1, '2024-07-15', 25, 'ENTRADA'),
+    (20, 1, '2024-08-07', 35, 'SALIDA'),
+    (21, 1, '2024-09-10', 60, 'ENTRADA'),
+    (22, 1, '2024-10-22', 10, 'SALIDA'),
+    (23, 1, '2024-11-18', 45, 'ENTRADA'),
+    (24, 1, '2024-12-03', 30, 'SALIDA'),
+    (25, 1, '2024-01-05', 25, 'ENTRADA'),
+    (26, 1, '2024-02-22', 40, 'SALIDA'),
+    (27, 1, '2024-03-17', 20, 'ENTRADA'),
+    (28, 1, '2024-04-30', 35, 'SALIDA'),
+    (29, 1, '2024-05-25', 50, 'ENTRADA'),
+    (30, 1, '2024-06-28', 30, 'SALIDA'),
+    (31, 1, '2024-07-22', 40, 'ENTRADA'),
+    (32, 1, '2024-08-10', 20, 'SALIDA'),
+    (33, 1, '2024-09-30', 50, 'ENTRADA'),
+    (34, 1, '2024-10-14', 30, 'SALIDA'),
+    (35, 1, '2024-11-05', 60, 'ENTRADA'),
+    (36, 1, '2024-12-01', 20, 'SALIDA'),
+    (37, 1, '2024-01-18', 45, 'ENTRADA'),
+    (38, 1, '2024-02-03', 25, 'SALIDA'),
+    (39, 1, '2024-03-25', 50, 'ENTRADA'),
+    (40, 1, '2024-04-14', 30, 'SALIDA'),
+    (41, 1, '2024-05-12', 40, 'ENTRADA'),
+    (42, 1, '2024-06-19', 20, 'SALIDA'),
+    (43, 1, '2024-07-05', 60, 'ENTRADA'),
+    (44, 1, '2024-08-25', 10, 'SALIDA'),
+    (45, 1, '2024-09-20', 45, 'ENTRADA'),
+    (46, 1, '2024-10-09', 35, 'SALIDA'),
+    (47, 1, '2024-11-15', 30, 'ENTRADA'),
+    (48, 1, '2024-12-10', 50, 'SALIDA'),
+    (49, 1, '2024-01-30', 40, 'ENTRADA'),
+    (50, 1, '2024-02-28', 30, 'SALIDA');

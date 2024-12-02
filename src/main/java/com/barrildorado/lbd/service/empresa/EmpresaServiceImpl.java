@@ -14,7 +14,6 @@ import com.barrildorado.lbd.dto.empresa.DatosActualizarEmpresa;
 import com.barrildorado.lbd.dto.empresa.DatosListadoEmpresa;
 import com.barrildorado.lbd.dto.empresa.DatosRegistroEmpresa;
 import com.barrildorado.lbd.dto.empresa.DatosRespuestaEmpresa;
-import com.barrildorado.lbd.dto.proveedor.DatosListadoProveedor;
 import com.barrildorado.lbd.model.Empresa;
 import com.barrildorado.lbd.model.Proveedor;
 import com.barrildorado.lbd.repository.EmpresaRepository;

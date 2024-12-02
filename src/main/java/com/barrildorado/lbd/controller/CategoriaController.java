@@ -3,10 +3,7 @@ import com.barrildorado.lbd.dto.categoria.*;
 import com.barrildorado.lbd.service.categoria.CategoriaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,10 +32,9 @@ public class CategoriaController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<DatosListadoCategoria>> listarCategorias(
-            @PageableDefault(direction = Sort.Direction.ASC) Pageable paginacion) {
-        Page<DatosListadoCategoria> categoriaPage = categoriaService.getAllCategorias(paginacion);
-        List<DatosListadoCategoria> categorias = categoriaPage.getContent();
+    public ResponseEntity<List<DatosListadoCategoria>> listarCategorias() {
+        Pageable paginacion = Pageable.unpaged();
+        List<DatosListadoCategoria> categorias = categoriaService.getAllCategorias(paginacion).getContent();
         return ResponseEntity.ok(categorias);
     }
 

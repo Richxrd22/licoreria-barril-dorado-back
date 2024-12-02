@@ -36,22 +36,22 @@ public class Categoria {
     @Column(unique = true, nullable = false)
     private String nombre_categoria;
 
-    @Column
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private Boolean activo;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "id_categoria")
     private List<Producto> productos;
 
     public Categoria(@Valid DatosRegistroCategoria datosRegistroCategoria) {
         this.nombre_categoria = datosRegistroCategoria.nombre_categoria();
-
+        this.activo = datosRegistroCategoria.activo();
     }
 
     public void actualizar(@Valid DatosActualizarCategoria datosActualizarCategoria) {
 
         this.nombre_categoria = datosActualizarCategoria.nombre_categoria();
-
+        this.activo = datosActualizarCategoria.activo();
     }
 
 }
